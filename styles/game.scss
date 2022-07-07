@@ -1,5 +1,5 @@
 // Active
-$activeText: hsl(66, 100%, 50%) ;
+$activeText: hsl(143, 100%, 50%) ;
 
 $paragraphColor: hsl(290, 100%, 20%);
 // EXTREME
@@ -140,10 +140,6 @@ body{
             border-radius: 4px;
             outline: none;
             transition: .2s;
-    
-            &:hover {
-                background-color: $redBtnHover;
-            }
         }
 
 // SCORES AND VS
@@ -181,7 +177,7 @@ body{
     .computer-header-active{
         font-size:38.4px;;
         color: $activeText;
-        margin-left: 12vw;
+        margin-right: 10vw;
     }
 
     #start{

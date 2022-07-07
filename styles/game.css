@@ -105,11 +105,6 @@ body .c-scissors {
   outline: none;
   transition: 0.2s;
 }
-body .c-paper:hover,
-body .c-rock:hover,
-body .c-scissors:hover {
-  background-color: hsl(0deg, 100%, 60%);
-}
 body #score, body #computer-score {
   font-size: clamp(20px, 3.5vw, 120px);
   color: hsl(0deg, 0%, 100%);
@@ -135,13 +130,13 @@ body #result {
 }
 body .your-header-active {
   font-size: 38.4px;
-  color: hsl(66deg, 100%, 50%);
+  color: hsl(143deg, 100%, 50%);
   margin-left: 12vw;
 }
 body .computer-header-active {
   font-size: 38.4px;
-  color: hsl(66deg, 100%, 50%);
-  margin-left: 12vw;
+  color: hsl(143deg, 100%, 50%);
+  margin-right: 10vw;
 }
 body #start {
   width: 20%;
