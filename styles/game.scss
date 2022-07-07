@@ -1,4 +1,6 @@
-// Paragraph
+// Active
+$activeText: hsl(66, 100%, 50%) ;
+
 $paragraphColor: hsl(290, 100%, 20%);
 // EXTREME
 $extremeBtn: hsl(0, 100%, 55%);
@@ -11,8 +13,8 @@ $mediumBtn: hsl(32, 98%, 55%);
 $mediumHover: hsl(32, 98%, 45%);
 ;
 // EASY
-$easyBtn: hsl(103, 98%, 55%);
-$easyHover: hsl(103, 100%, 45%);
+$greenBtn: hsl(103, 98%, 45%);
+$greenHover: hsl(103, 100%, 35%);
 $onBtnText: hsl(0, 0%, 100%);
 
 // YOUR CHOICE BUTTONS
@@ -61,24 +63,24 @@ body{
         width: 90%;
         height: 10%;
         margin-top: 1vw;
-        border: 2px solid white;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
 
     .sides{
-        font-size: clamp(16px,2vw,50px);
         color: $onBtnText;
     }
 
     .your-header{
-        margin-left: 12vw;
+        font-size: clamp(16px, 3vw, 50px);
+        margin-left: 11vw;
     }
 
     .computer-header{
         direction: ltr;
-        margin-right: 7.5vw;
+        font-size: clamp(16px, 3vw, 50px);
+        margin-right: 5.5vw;
     }
 
     .buttons {
@@ -86,7 +88,6 @@ body{
         height: 35%;
         margin-top: clamp(15px, 1vw, 25px);
         display: flex;
-        border: 2px solid white;
         align-items: center;
         justify-content: space-around
     }
@@ -169,6 +170,32 @@ body{
 
     #result{
         color: black;
+    }
+
+    .your-header-active{
+        font-size:38.4px;;
+        color: $activeText;
+        margin-left: 12vw;
+    }
+
+    .computer-header-active{
+        font-size:38.4px;;
+        color: $activeText;
+        margin-left: 12vw;
+    }
+
+    #start{
+        width: 20%;
+        height: clamp(60px,60%,200px);
+        background-color: $greenBtn;
+        border: 3px solid black;
+        font-size: clamp(20px,1.5vw,40px);
+        font-weight: bolder;
+        color: $onBtnText;
+        transition: .3s all;
+        &:hover{
+            background-color: $greenHover;
+        }
     }
 }
 

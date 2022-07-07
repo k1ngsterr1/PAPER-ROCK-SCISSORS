@@ -40,28 +40,27 @@ body .sides {
   width: 90%;
   height: 10%;
   margin-top: 1vw;
-  border: 2px solid white;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 body .sides {
-  font-size: clamp(16px, 2vw, 50px);
   color: hsl(0deg, 0%, 100%);
 }
 body .your-header {
-  margin-left: 12vw;
+  font-size: clamp(16px, 3vw, 50px);
+  margin-left: 11vw;
 }
 body .computer-header {
   direction: ltr;
-  margin-right: 7.5vw;
+  font-size: clamp(16px, 3vw, 50px);
+  margin-right: 5.5vw;
 }
 body .buttons {
   width: 90%;
   height: 35%;
   margin-top: clamp(15px, 1vw, 25px);
   display: flex;
-  border: 2px solid white;
   align-items: center;
   justify-content: space-around;
 }
@@ -133,4 +132,27 @@ body img {
 }
 body #result {
   color: black;
+}
+body .your-header-active {
+  font-size: 38.4px;
+  color: hsl(66deg, 100%, 50%);
+  margin-left: 12vw;
+}
+body .computer-header-active {
+  font-size: 38.4px;
+  color: hsl(66deg, 100%, 50%);
+  margin-left: 12vw;
+}
+body #start {
+  width: 20%;
+  height: clamp(60px, 60%, 200px);
+  background-color: hsl(103deg, 98%, 45%);
+  border: 3px solid black;
+  font-size: clamp(20px, 1.5vw, 40px);
+  font-weight: bolder;
+  color: hsl(0deg, 0%, 100%);
+  transition: 0.3s all;
+}
+body #start:hover {
+  background-color: hsl(103deg, 100%, 35%);
 }/*# sourceMappingURL=game.css.map */
