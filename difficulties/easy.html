@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/game.css" />
+    <title>EASY</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>EASY GAME</h1>
+      <!-- RESULT -->
+      <div class="result"><span id="result">0</span></div>
+      <!-- SIDES -->
+      <div class="sides">
+        <h3 class="your-header">YOUR SIDE:</h3>
+        <h3 class="computer-header">COMPUTER SIDE:</h3>
+      </div>
+      <div class="buttons">
+        <!-- YOUR SIDE -->
+        <div class="your-choice">
+          <h3><span id="score">0</span></h3>
+          <button class="paper">
+            <img src="/images/paper.png" alt="paper" />
+          </button>
+          <button class="rock">
+            <img
+              src="/images/rock.jpg"
+              alt="paper"
+              width="130px"
+              height="130px"
+            />
+          </button>
+          <button class="scissors">
+            <img src="/images/scissors.png" alt="paper" />
+          </button>
+        </div>
+        <h2 class="versus">VS</h2>
+        <!-- COMPUTER SIDE -->
+        <div class="computer-choice">
+          <button class="c-paper">
+            <img src="/images/paper.png" alt="paper" />
+          </button>
+          <button class="c-rock">
+            <img
+              src="/images/rock.jpg"
+              alt="paper"
+              width="130px"
+              height="130px"
+            />
+          </button>
+          <button class="c-scissors">
+            <img src="/images/scissors.png" alt="paper" />
+          </button>
+          <h3><span id="computer-score">0</span></h3>
+        </div>
+      </div>
+      <!-- END OF BUTTONS DIV -->
+    </div>
+    <script src="/easy.js"></script>
+  </body>
+</html>
