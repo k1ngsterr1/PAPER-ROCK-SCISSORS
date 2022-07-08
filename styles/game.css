@@ -150,4 +150,25 @@ body #start {
 }
 body #start:hover {
   background-color: hsl(103deg, 100%, 35%);
+}
+body .choose-one-p,
+body .choose-one-r,
+body .choose-one-s {
+  width: clamp(80px, 6.4166666667vw, 140px);
+  height: clamp(80px, 6.4166666667vw, 140px);
+  background-color: hsl(224deg, 100%, 50%);
+  border: 4px solid black;
+  margin-right: 1vw;
+  box-shadow: 0px 12px 17px 0px rgba(0, 0, 0, 0.387);
+  margin-left: 1vw;
+  border-radius: 4px;
+  outline: none;
+  transition: 0.2s;
+  cursor: pointer;
+}
+body .choose-one-p:hover,
+body .choose-one-r:hover,
+body .choose-one-s:hover {
+  background-color: hsl(224deg, 100%, 45%);
+  box-shadow: 0px 13px 17px 0px rgba(0, 0, 0, 0.487);
 }/*# sourceMappingURL=game.css.map */
