@@ -158,30 +158,34 @@ function choice() {
       }
     });
   }
+
+  // Computer Is Playing
+
+  if (compTurn == true) {
+    computerChoice();
+  }
 }
 
 function computerChoice() {
-  if (compTurn == true) {
-    compChoice.classList.remove("computer-header");
-    compChoice.classList.add("computer-header-active");
-    let random_comp = Math.floor(Math.random() * 3) + 1;
-    if (random_comp == 3) {
-      compScissorsValue = true;
-      console.log(compScissorsValue, "comp-scissors");
-    } else {
-      compScissorsValue = "";
-    }
-    if (random_comp == 2) {
-      compRockValue = true;
-      console.log(compRockValue, "comp-rock");
-    } else {
-      compRockValue = "";
-    }
-    if (random_comp == 1) {
-      compPaperValue = true;
-      console.log(compPaperValue, "comp-paper");
-    } else {
-      compPaperValue = "";
-    }
+  compChoice.classList.remove("computer-header");
+  compChoice.classList.add("computer-header-active");
+  let random_comp = Math.floor(Math.random() * 3) + 1;
+  if (random_comp == 3) {
+    compScissorsValue = true;
+    console.log(compScissorsValue, "comp-scissors");
+  } else {
+    compScissorsValue = "";
+  }
+  if (random_comp == 2) {
+    compRockValue = true;
+    console.log(compRockValue, "comp-rock");
+  } else {
+    compRockValue = "";
+  }
+  if (random_comp == 1) {
+    compPaperValue = true;
+    console.log(compPaperValue, "comp-paper");
+  } else {
+    compPaperValue = "";
   }
 }
