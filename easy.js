@@ -79,7 +79,6 @@ function choice() {
   // You is playing
 
   if (yourTurn == true) {
-    console.log("hui");
     yChoice.classList.remove("your-header");
     yChoice.classList.add("your-header-active");
     // Paper New Class
@@ -95,33 +94,94 @@ function choice() {
     scissors.classList.add("choose-one-s");
 
     result.textContent = "Choose the button";
+
+    paper.addEventListener("click", () => {
+      paperValue = true;
+      console.log(paperValue, "paper");
+
+      switch (paperValue) {
+        case true:
+          // Paper Disable and Selected Class
+          paper.disabled = true;
+          paper.classList.remove("choose-one-p");
+          paper.classList.add("paper-selected");
+          // Scissors Disable and Inactive Class
+          scissors.disabled = true;
+          scissors.classList.remove("choose-one-s");
+          scissors.classList.add("scissors-inact");
+          // Rock Disable and Inactive Class
+          rock.disabled = true;
+          rock.classList.remove("choose-one-r");
+          rock.classList.add("rock-inact");
+      }
+    });
+
+    rock.addEventListener("click", () => {
+      rockValue = true;
+      console.log(rockValue, "rock");
+
+      switch (rockValue) {
+        case true:
+          // Paper Disable and Inactive Class
+          paper.disabled = true;
+          paper.classList.remove("choose-one-p");
+          paper.classList.add("paper-inact");
+          // Scissors Disable and Inactive Class
+          scissors.disabled = true;
+          scissors.classList.remove("choose-one-s");
+          scissors.classList.add("scissors-inact");
+          // Rock Disable and Selected Class
+          rock.disabled = true;
+          rock.classList.remove("choose-one-r");
+          rock.classList.add("rock-selected");
+      }
+    });
+
+    scissors.addEventListener("click", () => {
+      scissorsValue = true;
+      console.log(scissorsValue, "scissors");
+
+      switch (scissorsValue) {
+        case true:
+          // Paper Disable and Inactive Class
+          paper.disabled = true;
+          paper.classList.remove("choose-one-p");
+          paper.classList.add("paper-inact");
+          // Scissors Disable and Selected Class
+          scissors.disabled = true;
+          scissors.classList.remove("choose-one-s");
+          scissors.classList.add("scissors-selected");
+          // Rock Disable and Inactive Class
+          rock.disabled = true;
+          rock.classList.remove("choose-one-r");
+          rock.classList.add("rock-inact");
+      }
+    });
   }
+}
 
-  // Computer Is Playing
-
+function computerChoice() {
   if (compTurn == true) {
     compChoice.classList.remove("computer-header");
     compChoice.classList.add("computer-header-active");
     let random_comp = Math.floor(Math.random() * 3) + 1;
     if (random_comp == 3) {
       compScissorsValue = true;
-      console.log(compScissorsValue, "scissors");
+      console.log(compScissorsValue, "comp-scissors");
     } else {
       compScissorsValue = "";
     }
     if (random_comp == 2) {
       compRockValue = true;
-      console.log(compRockValue, "rock");
+      console.log(compRockValue, "comp-rock");
     } else {
       compRockValue = "";
     }
     if (random_comp == 1) {
       compPaperValue = true;
-      console.log(compPaperValue, "paper");
+      console.log(compPaperValue, "comp-paper");
     } else {
       compPaperValue = "";
     }
   }
 }
-
-function computerChoice() {}

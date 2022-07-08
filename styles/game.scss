@@ -20,8 +20,12 @@ $onBtnText: hsl(0, 0%, 100%);
 // YOUR CHOICE BUTTONS
 $blueBtn: hsl(224, 100%, 70%);
 $blueBtnHover:hsl(224, 100%, 60%); 
+// CHOOSEABLE
 $chooseableBtn: hsl(224, 100%, 50%);
 $chooseableBtnHover: hsl(224, 100%, 45%);
+// INACTIVE
+$inactiveBtn: hsl(224, 100%, 90%);
+
 
 // COMPUTER CHOICE BUTTONS 
 $redBtn: hsl(0, 100%, 70%);
@@ -122,27 +126,26 @@ body{
 
     // COMPUTER CHOICE
 
-        .computer-choice {
-            width: 40%;
-            height: 70%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .c-paper,
-        .c-rock,
-        .c-scissors {
-            width: clamp(80px, 6.416666666666666vw, 140px);
-            height: clamp(80px, 6.416666666666666vw, 140px);
-            background-color: $redBtn;
-            border: 4px solid black;
-            margin-right: 1vw;
-            margin-left: 1vw;
-            border-radius: 4px;
-            outline: none;
-            transition: .2s;
-        }
+    .computer-choice {
+        width: 40%;
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .c-paper,
+    .c-rock,
+    .c-scissors {
+        width: clamp(80px, 6.416666666666666vw, 140px);
+        height: clamp(80px, 6.416666666666666vw, 140px);
+        background-color: $redBtn;
+        border: 4px solid black;
+        margin-right: 1vw;
+        margin-left: 1vw;
+        border-radius: 4px;
+        outline: none;
+        transition: .2s;
+    }
 
 // SCORES AND VS
 
@@ -215,6 +218,37 @@ body{
             background-color: $chooseableBtnHover;
             box-shadow: 0px 13px 17px 0px rgba(0, 0, 0, 0.487);
         }
+    }
+
+    // BUTTONS INACTIVE CLASSES
+    .paper-inact,
+    .scissors-inact,
+    .rock-inact {
+        width: clamp(80px, 6.416666666666666vw, 140px);
+        height: clamp(80px, 6.416666666666666vw, 140px);
+        background-color: $inactiveBtn;
+        border: 4px solid black;
+        margin-right: 1vw;
+        margin-left: 1vw;
+        border-radius: 4px;
+        outline: none;
+        transition: .2s;
+    }
+
+    // SELECTED BUTTONS
+
+    .paper-selected,
+    .scissors-selected,
+    .rock-selected {
+        width: clamp(80px, 6.416666666666666vw, 140px);
+        height: clamp(80px, 6.416666666666666vw, 140px);
+        background-color: $greenBtn;
+        border: 4px solid black;
+        margin-right: 1vw;
+        margin-left: 1vw;
+        border-radius: 4px;
+        outline: none;
+        transition: .2s;
     }
 }
 
