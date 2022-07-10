@@ -32,12 +32,29 @@ let compScissorsValue = "";
 let yChoice = document.querySelector(".your-header");
 let compChoice = document.querySelector(".computer-header");
 
+// First Turns
+let yourFirstTurn = "";
+let computerFirstTurn = "";
+
 // Start Button
 let startBtn = document.getElementById("start");
 let gameStart = "";
+
+// Both Sides Result Value
+let yourResult = "";
+let computerResult = "";
+
 // turns
 let yourTurn = "";
 let compTurn = "";
+
+// Win And Lose
+let win = "";
+let lose = "";
+
+// Successes
+let yourSuccesses = "";
+let computerSuccesses = "";
 
 // Game Logic
 
@@ -45,17 +62,21 @@ function sideSelection() {
   let random_number = Math.floor(Math.random() * (10 + 1));
   if (random_number > 5.1) {
     yourTurn = true;
+    yourFirstTurn = true;
     result.textContent = "Your Turn";
     setTimeout(choice, 500);
   } else {
     yourTurn = false;
+    yourFirstTurn = false;
   }
   if (random_number < 5.1) {
     compTurn = true;
+    computerFirstTurn = true;
     result.textContent = "Computer Turn";
     choice();
   } else {
     compTurn = false;
+    computerFirstTurn = false;
   }
   // console.log(compTurn, yourTurn);
   // console.log(random_number);
@@ -79,6 +100,7 @@ function choice() {
   // You is playing
 
   if (yourTurn == true) {
+    // NEW STYLES
     yChoice.classList.remove("your-header");
     yChoice.classList.add("your-header-active");
     // Paper New Class
@@ -95,10 +117,11 @@ function choice() {
 
     result.textContent = "Choose the button";
 
+    // PAPER ACTION
     paper.addEventListener("click", () => {
       paperValue = true;
       console.log(paperValue, "paper");
-
+      yourSuccesses = true;
       switch (paperValue) {
         case true:
           // Paper Disable and Selected Class
@@ -113,11 +136,20 @@ function choice() {
           rock.disabled = true;
           rock.classList.remove("choose-one-r");
           rock.classList.add("rock-inact");
+
+          result.textContent = "You have chosen Paper";
+          yourResult = "Paper";
+          // If Your's Turn Was First
+          if (yourFirstTurn == true) {
+            setInterval(computerChoice, 2000);
+          }
       }
     });
 
+    // ROCK ACTION
     rock.addEventListener("click", () => {
       rockValue = true;
+      yourSuccesses = true;
       console.log(rockValue, "rock");
 
       switch (rockValue) {
@@ -134,11 +166,20 @@ function choice() {
           rock.disabled = true;
           rock.classList.remove("choose-one-r");
           rock.classList.add("rock-selected");
+
+          result.textContent = "You have chosen Rock";
+          yourResult = "Rock";
+          // If Your's Turn Was First
+          if (yourFirstTurn == true) {
+            setInterval(computerChoice, 2000);
+          }
       }
     });
 
+    // SCISSORS ACTION
     scissors.addEventListener("click", () => {
       scissorsValue = true;
+      yourSuccesses = true;
       console.log(scissorsValue, "scissors");
 
       switch (scissorsValue) {
@@ -155,6 +196,13 @@ function choice() {
           rock.disabled = true;
           rock.classList.remove("choose-one-r");
           rock.classList.add("rock-inact");
+
+          result.textContent = "You have chosen Scissors";
+          yourResult = "Scissors";
+          // If Your's Turn Was First
+          if (yourFirstTurn == true) {
+            setInterval(computerChoice, 2000);
+          }
       }
     });
   }
@@ -162,30 +210,126 @@ function choice() {
   // Computer Is Playing
 
   if (compTurn == true) {
+    yourTurn = false;
+    computerFirstTurn = true;
+    yourFirstTurn = false;
     computerChoice();
   }
+
+  // if (yourSuccesses == true && computerSelected == true) {
+  //   setInterval(resultCompare, 1000);
+  //   console.log("Compare");
+  // }
 }
 
 function computerChoice() {
   compChoice.classList.remove("computer-header");
   compChoice.classList.add("computer-header-active");
   let random_comp = Math.floor(Math.random() * 3) + 1;
+  yourFirstTurn = false;
   if (random_comp == 3) {
     compScissorsValue = true;
-    console.log(compScissorsValue, "comp-scissors");
+    computerSuccesses = true;
+    computerResult = "Scissors";
+    if ((computerResult = "Scissors")) {
+      compTurn = false;
+      compChoice.classList.remove("computer-header-active");
+      compChoice.classList.add("computer-header");
+      // If Computer's Turn Was First
+      if (computerFirstTurn == true) {
+        yourFirstTurn = false;
+        setTimeout((yourTurn = true) && choice, 2000);
+      }
+    }
+    console.log(compScissorsValue, computerResult, "comp-scissors");
   } else {
     compScissorsValue = "";
   }
   if (random_comp == 2) {
     compRockValue = true;
-    console.log(compRockValue, "comp-rock");
+    computerSuccesses = true;
+    computerResult = "Rock";
+    if ((computerResult = "Rock")) {
+      compTurn = false;
+      compChoice.classList.remove("computer-header-active");
+      compChoice.classList.add("computer-header");
+      // If Computer's Turn Was First
+      if (computerFirstTurn == true) {
+        yourFirstTurn = false;
+        setTimeout((yourTurn = true) && choice, 2000);
+      }
+    }
+    console.log(compRockValue, computerResult, "comp-rock");
   } else {
     compRockValue = "";
   }
   if (random_comp == 1) {
     compPaperValue = true;
-    console.log(compPaperValue, "comp-paper");
+    computerSuccesses = true;
+    computerResult = "Paper";
+    if ((computerResult = "Paper")) {
+      compTurn = false;
+      compChoice.classList.remove("computer-header-active");
+      compChoice.classList.add("computer-header");
+      // If Computer's Turn Was First
+      if (computerFirstTurn == true) {
+        yourFirstTurn = false;
+        setTimeout((yourTurn = true) && choice, 2000);
+      }
+    }
+    console.log(compPaperValue, computerResult, "comp-paper");
   } else {
     compPaperValue = "";
+  }
+  // if (yourSuccesses == true && computerSelected == true) {
+  //   setInterval(resultCompare, 1000);
+  //   console.log("Compare");
+  // }
+}
+
+function computerSelected() {
+  switch (compScissorsValue) {
+    case true:
+      result.textContent = "Computer has chosen Scissors";
+  }
+
+  switch (compRockValue) {
+    case true:
+      result.textContent = "Computer has chosen Rock";
+  }
+
+  switch (compPaperValue) {
+    case true:
+      result.textContent = "Computer has chosen Paper";
+  }
+}
+
+function resultCompare() {
+  // You win
+  if ((computerResult = "Scissors" && (yourResult = "Rock"))) {
+    result.textContent = "You Win!";
+    yourResult.textContent += 1;
+  }
+  if ((computerResult = "Paper" && (yourResult = "Scissors"))) {
+    result.textContent = "You Win!";
+    yourResult.textContent += 1;
+  }
+  if ((computerResult = "Rock" && (yourResult = "Paper"))) {
+    result.textContent = "You Win!";
+    yourResult.textContent += 1;
+  }
+
+  // You Lose
+  if ((computerResult = "Scissors" && (yourResult = "Paper"))) {
+    result.textContent = "You Lose!";
+    yourResult.textContent += 0;
+  }
+  if ((computerResult = "Paper" && (yourResult = "Rock"))) {
+    result.textContent = "You Win!";
+    yourResult.textContent += 0;
+  }
+  if ((computerResult = "Rock" && (yourResult = "Scissors"))) {
+    result.textContent = "You Lose!";
+    yourResult.textContent += 0;
   }
 }
