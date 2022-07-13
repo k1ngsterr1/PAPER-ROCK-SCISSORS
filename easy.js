@@ -141,8 +141,9 @@ function choice() {
           yourResult = "Paper";
           // If Your's Turn Was First
           if (yourFirstTurn == true) {
-            setInterval(computerChoice, 2000);
+            setTimeout(computerChoice, 2000);
           }
+          setTimeout(gameEnd, 1000);
       }
     });
 
@@ -171,8 +172,9 @@ function choice() {
           yourResult = "Rock";
           // If Your's Turn Was First
           if (yourFirstTurn == true) {
-            setInterval(computerChoice, 2000);
+            setTimeout(computerChoice, 2000);
           }
+          setTimeout(gameEnd, 1000);
       }
     });
 
@@ -201,28 +203,25 @@ function choice() {
           yourResult = "Scissors";
           // If Your's Turn Was First
           if (yourFirstTurn == true) {
-            setInterval(computerChoice, 2000);
+            setTimeout(computerChoice, 2000);
           }
+          setTimeout(gameEnd, 1000);
       }
     });
   }
 
   // Computer Is Playing
-
+  // ! RESULT COMPARE
   if (compTurn == true) {
     yourTurn = false;
     computerFirstTurn = true;
     yourFirstTurn = false;
     computerChoice();
   }
-
-  // if (yourSuccesses == true && computerSelected == true) {
-  //   setInterval(resultCompare, 1000);
-  //   console.log("Compare");
-  // }
 }
 
 function computerChoice() {
+  yourTurn = false;
   compChoice.classList.remove("computer-header");
   compChoice.classList.add("computer-header-active");
   let random_comp = Math.floor(Math.random() * 3) + 1;
@@ -239,6 +238,7 @@ function computerChoice() {
       if (computerFirstTurn == true) {
         yourFirstTurn = false;
         setTimeout((yourTurn = true) && choice, 2000);
+        setTimeout(gameEnd, 1000);
       }
     }
     console.log(compScissorsValue, computerResult, "comp-scissors");
@@ -257,6 +257,7 @@ function computerChoice() {
       if (computerFirstTurn == true) {
         yourFirstTurn = false;
         setTimeout((yourTurn = true) && choice, 2000);
+        setTimeout(gameEnd, 1000);
       }
     }
     console.log(compRockValue, computerResult, "comp-rock");
@@ -275,61 +276,54 @@ function computerChoice() {
       if (computerFirstTurn == true) {
         yourFirstTurn = false;
         setTimeout((yourTurn = true) && choice, 2000);
+        setTimeout(gameEnd, 1000);
       }
     }
     console.log(compPaperValue, computerResult, "comp-paper");
   } else {
     compPaperValue = "";
   }
-  // if (yourSuccesses == true && computerSelected == true) {
-  //   setInterval(resultCompare, 1000);
-  //   console.log("Compare");
-  // }
 }
 
-function computerSelected() {
-  switch (compScissorsValue) {
-    case true:
-      result.textContent = "Computer has chosen Scissors";
-  }
-
-  switch (compRockValue) {
-    case true:
-      result.textContent = "Computer has chosen Rock";
-  }
-
-  switch (compPaperValue) {
-    case true:
-      result.textContent = "Computer has chosen Paper";
+function gameEnd() {
+  if (yourSuccesses == true && computerSuccesses == true) {
+    setTimeout(resultCompare, 1000);
+    console.log("Compare");
   }
 }
 
 function resultCompare() {
   // You win
-  if ((computerResult = "Scissors" && (yourResult = "Rock"))) {
+  if (computerResult == "Scissors" && yourResult == "Rock") {
     result.textContent = "You Win!";
-    yourResult.textContent += 1;
+    yourScore.textContent += 1;
+  } else {
   }
-  if ((computerResult = "Paper" && (yourResult = "Scissors"))) {
+  if (computerResult == "Paper" && yourResult == "Scissors") {
     result.textContent = "You Win!";
-    yourResult.textContent += 1;
+    yourScore.textContent += 1;
+  } else {
   }
-  if ((computerResult = "Rock" && (yourResult = "Paper"))) {
+  if (computerResult == "Rock" && yourResult == "Paper") {
     result.textContent = "You Win!";
-    yourResult.textContent += 1;
+    yourScore.textContent += 1;
+  } else {
   }
 
   // You Lose
-  if ((computerResult = "Scissors" && (yourResult = "Paper"))) {
+  if (computerResult == "Scissors" && yourResult == "Paper") {
     result.textContent = "You Lose!";
-    yourResult.textContent += 0;
+    yourScore.textContent += 0;
+  } else {
   }
-  if ((computerResult = "Paper" && (yourResult = "Rock"))) {
+  if (computerResult == "Paper" && yourResult == "Rock") {
     result.textContent = "You Win!";
-    yourResult.textContent += 0;
+    yourScore.textContent += 0;
+  } else {
   }
-  if ((computerResult = "Rock" && (yourResult = "Scissors"))) {
+  if (computerResult == "Rock" && yourResult == "Scissors") {
     result.textContent = "You Lose!";
-    yourResult.textContent += 0;
+    yourScore.textContent += 0;
+  } else {
   }
 }
