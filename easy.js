@@ -3,6 +3,9 @@ let result = document.getElementById("result");
 let yourScore = document.getElementById("score");
 let computerScore = document.getElementById("computer-score");
 
+let yourScoreValue = 0;
+let computerScoreValue = 0;
+
 // Play Buttons
 let paper = document.querySelector(".paper");
 let rock = document.querySelector(".rock");
@@ -40,6 +43,10 @@ let computerFirstTurn = "";
 let startBtn = document.getElementById("start");
 let gameStart = "";
 
+// Again Button
+let againBtn = document.getElementById("again");
+let againStart = "";
+
 // Both Sides Result Value
 let yourResult = "";
 let computerResult = "";
@@ -73,7 +80,7 @@ function sideSelection() {
     compTurn = true;
     computerFirstTurn = true;
     result.textContent = "Computer Turn";
-    choice();
+    setTimeout(choice, 500);
   } else {
     compTurn = false;
     computerFirstTurn = false;
@@ -84,7 +91,7 @@ function sideSelection() {
 
 function startGame() {
   gameStart = true;
-  startBtn.style.visibility = "hidden";
+  startBtn.style.display = "none";
   result.textContent = "Game Has Started";
 
   if (gameStart == true) {
@@ -208,10 +215,11 @@ function choice() {
           setTimeout(gameEnd, 1000);
       }
     });
+  } else {
+    yChoice.classList.remove("your-header-active");
+    yChoice.classList.add("your-header");
   }
-
   // Computer Is Playing
-  // ! RESULT COMPARE
   if (compTurn == true) {
     yourTurn = false;
     computerFirstTurn = true;
@@ -285,9 +293,167 @@ function computerChoice() {
   }
 }
 
+function againGame() {
+  computerResult = "";
+  yourResult = "";
+
+  yourFirstTurn = "";
+  computerFirstTurn = "";
+  compTurn = "";
+  yourTurn = "";
+
+  paper.disabled = false;
+  scissors.disabled = false;
+  rock.disabled = false;
+
+  // Removing All Classes From The Player's Buttons
+
+  switch (paperValue) {
+    case true:
+      // Paper Not Selected
+      paper.classList.remove("paper-selected");
+      paper.classList.add("paper");
+      // Scissors Not Selected
+      scissors.classList.remove("scissors-inact");
+      scissors.classList.add("scissors");
+      // Rock Not Selected
+      rock.classList.remove("rock-inact");
+      rock.classList.add("rock");
+  }
+
+  switch (rockValue) {
+    case true:
+      // Paper Not Selected
+      paper.classList.remove("paper-inact");
+      paper.classList.add("paper");
+      // Scissors Not Selected
+      scissors.classList.remove("scissors-inact");
+      scissors.classList.add("scissors");
+      // Rock Not Selected
+      rock.classList.remove("rock-selected");
+      rock.classList.add("rock");
+  }
+
+  switch (scissorsValue) {
+    case true:
+      // Paper Not Selected
+      paper.classList.remove("paper-inact");
+      paper.classList.add("paper");
+      // Scissors Not Selected
+      scissors.classList.remove("scissors-selected");
+      scissors.classList.add("scissors");
+      // Rock Not Selected
+      rock.classList.remove("rock-inact");
+      rock.classList.add("rock");
+  }
+
+  // Removing All Classes From The Computer's Buttons
+  switch (compScissorsValue) {
+    case true:
+      compPaper.classList.remove("paper-inact");
+      compPaper.classList.add("c-paper");
+
+      compScissors.classList.remove("scissors-selected");
+      compScissors.classList.add("c-scissors");
+
+      compRock.classList.remove("rock-inact");
+      compRock.classList.add("c-rock");
+  }
+
+  switch (compPaperValue) {
+    case true:
+      compPaper.classList.remove("paper-selected");
+      compPaper.classList.add("c-paper");
+
+      compScissors.classList.remove("scissors-inact");
+      compScissors.classList.add("c-scissors");
+
+      compRock.classList.remove("rock-inact");
+      compRock.classList.add("c-rock");
+  }
+
+  switch (compRockValue) {
+    case true:
+      compPaper.classList.remove("paper-inact");
+      compPaper.classList.add("c-paper");
+
+      compScissors.classList.remove("scissors-inact");
+      compScissors.classList.add("c-scissors");
+
+      compRock.classList.remove("rock-selected");
+      compRock.classList.add("c-rock");
+  }
+
+  scissorsValue = "";
+  rockValue = "";
+  paperValue = "";
+
+  yourSuccesses = "";
+  computerSuccesses = "";
+
+  console.log("again Game");
+  paper.removeEventListener("click", () => {});
+  setTimeout(sideSelection, 1000);
+}
+
+againBtn.addEventListener("click", () => {
+  againBtn.style.display = "none";
+  yourSuccesses = "";
+  computerSuccesses = "";
+  againGame();
+});
+
 function gameEnd() {
+  // If all are successful
+
   if (yourSuccesses == true && computerSuccesses == true) {
-    setTimeout(resultCompare, 1000);
+    console.log("game-end");
+    // Removing Active Class From Header
+    yChoice.classList.remove("your-header-active");
+    yChoice.classList.add("your-header");
+
+    // Showing Again Button
+    againBtn.style.display = "block";
+
+    // Showing Computer's Result by Adding Active Class To The Chosen Btn
+    switch (compScissorsValue) {
+      case true:
+        compPaper.classList.remove("c-paper");
+        compPaper.classList.add("paper-inact");
+
+        compScissors.classList.remove("c-scissors");
+        compScissors.classList.add("scissors-selected");
+
+        compRock.classList.remove("c-rock");
+        compRock.classList.add("rock-inact");
+    }
+
+    switch (compPaperValue) {
+      case true:
+        compPaper.classList.remove("c-paper");
+        compPaper.classList.add("paper-selected");
+
+        compScissors.classList.remove("c-scissors");
+        compScissors.classList.add("scissors-inact");
+
+        compRock.classList.remove("c-rock");
+        compRock.classList.add("rock-inact");
+    }
+
+    switch (compRockValue) {
+      case true:
+        compPaper.classList.remove("c-paper");
+        compPaper.classList.add("paper-inact");
+
+        compScissors.classList.remove("c-scissors");
+        compScissors.classList.add("scissors-inact");
+
+        compRock.classList.remove("c-rock");
+        compRock.classList.add("rock-selected");
+    }
+
+    // Compare Function
+    resultCompare();
     console.log("Compare");
   }
 }
@@ -296,17 +462,20 @@ function resultCompare() {
   // You win
   if (computerResult == "Scissors" && yourResult == "Rock") {
     result.textContent = "You Win!";
-    yourScore.textContent += 1;
+    yourScoreValue++;
+    yourScore.textContent = yourScoreValue;
   } else {
   }
   if (computerResult == "Paper" && yourResult == "Scissors") {
     result.textContent = "You Win!";
-    yourScore.textContent += 1;
+    yourScoreValue++;
+    yourScore.textContent = yourScoreValue;
   } else {
   }
   if (computerResult == "Rock" && yourResult == "Paper") {
     result.textContent = "You Win!";
-    yourScore.textContent += 1;
+    yourScoreValue++;
+    yourScore.textContent = yourScoreValue;
   } else {
   }
 
@@ -327,17 +496,19 @@ function resultCompare() {
   // You Lose
   if (computerResult == "Scissors" && yourResult == "Paper") {
     result.textContent = "You Lose!";
-    yourScore.textContent += 0;
+    computerScoreValue++;
+    computerScore.textContent = computerScoreValue;
   } else {
   }
   if (computerResult == "Paper" && yourResult == "Rock") {
     result.textContent = "You Win!";
-    yourScore.textContent += 0;
+    computerScoreValue++;
+    computerScore.textContent = computerScoreValue;
   } else {
   }
   if (computerResult == "Rock" && yourResult == "Scissors") {
     result.textContent = "You Lose!";
-    yourScore.textContent += 0;
+    computerScore.textContent = computerScoreValue;
   } else {
   }
 }

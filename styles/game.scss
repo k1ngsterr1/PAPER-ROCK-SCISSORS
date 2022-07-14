@@ -250,5 +250,21 @@ body{
         outline: none;
         transition: .2s;
     }
+
+    #again {
+        width: 20%;
+        height: clamp(60px, 60%, 200px);
+        background-color: $greenBtn;
+        border: 3px solid black;
+        font-size: clamp(20px, 1.5vw, 40px);
+        font-weight: bolder;
+        display: none;
+        color: $onBtnText;
+        transition: .3s all;
+
+        &:hover {
+            background-color: $greenHover;
+        }
+    }
 }
 

@@ -197,4 +197,18 @@ body .rock-selected {
   border-radius: 4px;
   outline: none;
   transition: 0.2s;
+}
+body #again {
+  width: 20%;
+  height: clamp(60px, 60%, 200px);
+  background-color: hsl(103deg, 98%, 45%);
+  border: 3px solid black;
+  font-size: clamp(20px, 1.5vw, 40px);
+  font-weight: bolder;
+  display: none;
+  color: hsl(0deg, 0%, 100%);
+  transition: 0.3s all;
+}
+body #again:hover {
+  background-color: hsl(103deg, 100%, 35%);
 }/*# sourceMappingURL=game.css.map */
