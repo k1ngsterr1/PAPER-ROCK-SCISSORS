@@ -238,8 +238,8 @@ function computerChoice() {
       if (computerFirstTurn == true) {
         yourFirstTurn = false;
         setTimeout((yourTurn = true) && choice, 2000);
-        setTimeout(gameEnd, 1000);
       }
+      setTimeout(gameEnd, 1000);
     }
     console.log(compScissorsValue, computerResult, "comp-scissors");
   } else {
@@ -257,8 +257,8 @@ function computerChoice() {
       if (computerFirstTurn == true) {
         yourFirstTurn = false;
         setTimeout((yourTurn = true) && choice, 2000);
-        setTimeout(gameEnd, 1000);
       }
+      setTimeout(gameEnd, 1000);
     }
     console.log(compRockValue, computerResult, "comp-rock");
   } else {
@@ -276,8 +276,8 @@ function computerChoice() {
       if (computerFirstTurn == true) {
         yourFirstTurn = false;
         setTimeout((yourTurn = true) && choice, 2000);
-        setTimeout(gameEnd, 1000);
       }
+      setTimeout(gameEnd, 1000);
     }
     console.log(compPaperValue, computerResult, "comp-paper");
   } else {
@@ -307,6 +307,20 @@ function resultCompare() {
   if (computerResult == "Rock" && yourResult == "Paper") {
     result.textContent = "You Win!";
     yourScore.textContent += 1;
+  } else {
+  }
+
+  // TIE
+  if (computerResult == "Scissors" && yourResult == "Scissors") {
+    result.textContent = "Tie!";
+  } else {
+  }
+  if (computerResult == "Rock" && yourResult == "Rock") {
+    result.textContent = "Tie!";
+  } else {
+  }
+  if (computerResult == "Paper" && yourResult == "Paper") {
+    result.textContent = "Tie!";
   } else {
   }
 
